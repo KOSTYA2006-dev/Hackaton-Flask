@@ -37,7 +37,7 @@ def admin_login():
     if admin and check_password_hash(admin.password, password):
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token)
-    return jsonify({"message": "Invalid credentials"}), 401
+    return jsonify({"message": "Ошибка"}), 401
 
 # Admin routes for managing users
 @app.route('/admin/users', methods=['GET'])
@@ -69,9 +69,9 @@ def update_user(user_id):
             user.username = data.get('username', user.username)
             user.email = data.get('email', user.email)
             db.session.commit()
-            return jsonify({'message': 'User updated successfully'})
-        return jsonify({'message': 'User not found'}), 404
-    return jsonify({"message": "Unauthorized"}), 403
+            return jsonify({'message': 'Обнов'})
+        return jsonify({'message': 'Ненайд'}), 404
+    return jsonify({"message": "3"}), 403
 
 @app.route('/admin/users/<int:user_id>', methods=['DELETE'])
 @jwt_required()
@@ -81,6 +81,6 @@ def delete_user(user_id):
         if user:
             db.session.delete(user)
             db.session.commit()
-            return jsonify({'message': 'User deleted successfully'}), 200
-        return jsonify({'message': 'User not found'}), 404
-    return jsonify({"message": "Unauthorized"}), 403
+            return jsonify({'message': 'Пользователь удален'}), 200
+        return jsonify({'message': 'Пользователя нет'}), 404
+    return jsonify({"message": "ошибка"}), 403

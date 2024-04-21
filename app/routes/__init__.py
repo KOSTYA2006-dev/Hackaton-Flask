@@ -18,11 +18,11 @@ def create_app():
     jwt.init_app(app)
     socketio.init_app(app)
     CORS(app)
+    CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 
-    # Импорт модулей маршрутизации внутри функции создания приложения
+
     from routes import auth_routes, user_routes, admin_routes
 
-    # Регистрация blueprint'ов
     app.register_blueprint(auth_routes.auth_bp)
     app.register_blueprint(user_routes.user_bp)
     app.register_blueprint(admin_routes.admin_bp)

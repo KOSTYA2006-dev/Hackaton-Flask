@@ -3,8 +3,8 @@ import os  # Убедитесь, что библиотека os правильн
 class Config:
     """Базовый конфигурационный класс."""
     DB_USERNAME = os.getenv("DB_USERNAME", "root")
-    DB_PASSWORD = os.getenv("DB_PASSWORD", "Kolokola2006")
-    DB_HOST = os.getenv("DB_HOST", "localhost")
+    DB_PASSWORD = os.getenv("DB_PASSWORD", "")
+    DB_HOST = os.getenv("DB_HOST", "http://127.0.0.1")
     DB_DATABASE = os.getenv("DB_DATABASE", "hackFlask")
     SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
     SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}/{DB_DATABASE}'

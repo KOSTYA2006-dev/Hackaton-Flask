@@ -24,7 +24,7 @@ def get_user_profile():
         }
         return jsonify(user_data), 200
     else:
-        return jsonify({'message': 'User not found'}), 404
+        return jsonify({'message': 'Пользователь не найден'}), 404
 
 @user_bp.route('/update', methods=['PUT'])
 @jwt_required()
@@ -36,9 +36,9 @@ def update_user_profile():
         user.username = data.get('username', user.username)
         user.email = data.get('email', user.email)
         db.session.commit()
-        return jsonify({'message': 'Profile updated successfully'}), 200
+        return jsonify({'message': 'Профиль обнавлен'}), 200
     else:
-        return jsonify({'message': 'User not found'}), 404
+        return jsonify({'message': 'Пользователь не найден'}), 404
 
 @user_bp.route('/set_busy', methods=['POST'])
 @jwt_required()
@@ -48,5 +48,5 @@ def set_user_busy():
     if user:
         user.is_busy = True
         db.session.commit()
-        return jsonify({"message": "User status updated to busy"}), 200
-    return jsonify({"message": "User not found"}), 404
+        return jsonify({"message": "Обнов"}), 200
+    return jsonify({"message": "Не найден"}), 404
